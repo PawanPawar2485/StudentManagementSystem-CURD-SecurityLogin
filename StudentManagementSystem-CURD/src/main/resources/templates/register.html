@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Register Student</title>
+<link href="/css/registerStyle.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <h2 class="logo">Student Management</h2>
+    <ul class="nav-links">
+      <li><a th:href="@{/student/home}">Home</a></li>
+      <li><a th:href="@{/student/student-form}">Register Student</a></li>
+      <li><a th:href="@{/student/view-all}">View Students</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="form-box">
+    <h1>Register Student</h1>
+    <form th:action="@{/student/save-student}" th:object="${student}" method="post">
+      <input type="text" th:field="*{sname}" placeholder="Student Name" required>
+      <input type="text" th:field="*{degree}" placeholder="Degree" required>
+      <input type="number" th:field="*{percentage}" placeholder="Percentage" required>
+      <input type="text" th:field="*{college}" placeholder="College" required>
+      <button type="submit">SAVE STUDENT</button>
+    </form>
+    <p class="footer-text">
+      <a th:href="@{/student/view-all}">View All Students</a>
+    </p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student Management Home</title>
+<link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <h2 class="logo">Student Management</h2>
+    <ul class="nav-links">
+      <li><a th:href="@{/student/home}">Home</a></li>
+      <li><a th:href="@{/student/student-form}">Register Student</a></li>
+      <li><a th:href="@{/student/view-all}">View Students</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+    <h1>Welcome to Student Management Application</h1>
+
+    <a th:href="@{/student/student-form}">Register Student</a>
+    <a th:href="@{/student/view-all}">View Students</a>
+
+    <form th:action="@{/student/search-student}" class="search-form">
+        <input type="number" name="sid" placeholder="Search Student By Id" class="search-input">
+        <input type="submit" value="Search" class="search-btn">
+    </form>
+
+    <div th:if="${student!=null}">
+        <h3>Id: [[${student.sid}]]</h3>
+        <h3>Name: [[${student.sname}]]</h3>
+        <h3>Degree: [[${student.degree}]]</h3>
+        <h3>Percentage: [[${student.percentage}]]</h3>
+        <h3>College: [[${student.college}]]</h3>
+    </div>
+
+    <div th:if="${error!=null}" class="error-box">
+        [[${error}]]
+    </div>
+</div>
+
+</body>
+</html>

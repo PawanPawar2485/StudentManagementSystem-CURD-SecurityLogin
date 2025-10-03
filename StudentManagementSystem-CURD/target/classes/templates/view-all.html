@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View Students</title>
+<link href="/css/viewAll.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <h2 class="logo">Student Management</h2>
+    <ul class="nav-links">
+      <li><a th:href="@{/student/home}">Home</a></li>
+      <li><a th:href="@{/student/student-form}">Register Student</a></li>
+      <li><a th:href="@{/student/view-all}">View Students</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>Student List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>SID</th>
+        <th>Name</th>
+        <th>Degree</th>
+        <th>Percentage</th>
+        <th>College</th>
+        <th>Delete</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="student : ${students}">
+        <td th:text="${student.sid}"></td>
+        <td th:text="${student.sname}"></td>
+        <td th:text="${student.degree}"></td>
+        <td th:text="${student.percentage}"></td>
+        <td th:text="${student.college}"></td>
+        <td>
+          <a th:href="@{/student/delete/{id}(id=${student.sid})}">
+            <button class="delete-btn">Delete</button>
+          </a>
+        </td>
+        <td>
+          <a th:href="@{/student/edit-form/{id}(id=${student.sid})}">
+            <button class="edit-btn">Edit</button>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
